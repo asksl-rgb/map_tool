@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="GraphicsView" name="pgmGraphicsView" native="true">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>开始</string>
+    </property>
+    <addaction name="doOpen"/>
+    <addaction name="doSave"/>
+    <addaction name="doSave_As"/>
+    <addaction name="doClose"/>
+    <addaction name="separator"/>
+    <addaction name="doExit"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>图片编辑</string>
+    </property>
+    <addaction name="doRestore"/>
+    <addaction name="do_adjust"/>
+    <addaction name="separator"/>
+    <addaction name="do_AutoPS_wec"/>
+    <addaction name="doDrawLine"/>
+    <addaction name="doDrawWhitePolygon"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="doAbout"/>
+    <addaction name="actiontest"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>轨迹编辑</string>
+    </property>
+    <addaction name="doOpenYaml"/>
+    <addaction name="separator"/>
+    <addaction name="doOpenJson"/>
+    <addaction name="doOpenJson_multiMPath"/>
+    <addaction name="do_draw_path"/>
+    <addaction name="doDrawPathContinue"/>
+    <addaction name="do_fill_path"/>
+    <addaction name="do_draw_next_mpath"/>
+    <addaction name="doCleanJson"/>
+    <addaction name="doCleanAllMPath"/>
+    <addaction name="separator"/>
+    <addaction name="doSaveJson"/>
+    <addaction name="doDrawTraj_png"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>覆盖式轨迹</string>
+    </property>
+    <addaction name="do_draw_polygons_area"/>
+    <addaction name="do_draw_ploygons"/>
+    <addaction name="do_adjust_polygons_area"/>
+    <addaction name="separator"/>
+    <addaction name="do_save_polygons_area"/>
+    <addaction name="do_clean_polygons_area"/>
+    <addaction name="do_load_polygons_area"/>
+    <addaction name="separator"/>
+    <addaction name="do_draw_full_covered_path"/>
+   </widget>
+   <widget class="QMenu" name="menurtk">
+    <property name="title">
+     <string>rtk覆盖</string>
+    </property>
+    <addaction name="doOpenJsonExclusively"/>
+    <addaction name="do_rtk_full_cover_path"/>
+    <addaction name="separator"/>
+    <addaction name="doSaveJson"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>轨迹标注</string>
+    </property>
+    <addaction name="do_selectMultiPoint_polygen"/>
+    <addaction name="do_clean_pointSelect_area"/>
+    <addaction name="do_addAttribute"/>
+   </widget>
+   <widget class="QMenu" name="menu_7">
+    <property name="title">
+     <string>功能区绘制</string>
+    </property>
+    <addaction name="do_draw_functional_area"/>
+    <addaction name="do_clean_current_functional_area"/>
+    <addaction name="do_clean_all_functional_area"/>
+    <addaction name="do_draw_next_functional_area"/>
+    <addaction name="separator"/>
+    <addaction name="do_save_functional_area"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+   <addaction name="menurtk"/>
+   <addaction name="menu_6"/>
+   <addaction name="menu_7"/>
+   <addaction name="menu_3"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar_File">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBar_Edit">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBar_PathEdit">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBar_fullCover">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBar_About">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="doOpen">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doOpen.svg</normaloff>:/doOpen.svg</iconset>
+   </property>
+   <property name="text">
+    <string>打开(&amp;O)</string>
+   </property>
+   <property name="toolTip">
+    <string>打开一张图片</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="doClose">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doClose.svg</normaloff>:/doClose.svg</iconset>
+   </property>
+   <property name="text">
+    <string>关闭图片(&amp;W)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="doSave">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doSave.svg</normaloff>:/doSave.svg</iconset>
+   </property>
+   <property name="text">
+    <string>保存图片(&amp;S)</string>
+   </property>
+   <property name="toolTip">
+    <string>保存图片(S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="doSave_As">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doSave_As.svg</normaloff>:/doSave_As.svg</iconset>
+   </property>
+   <property name="text">
+    <string>导出图片(F12)</string>
+   </property>
+   <property name="toolTip">
+    <string>导出图片(F12)</string>
+   </property>
+   <property name="shortcut">
+    <string>F12</string>
+   </property>
+  </action>
+  <action name="doExit">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doExit.svg</normaloff>:/doExit.svg</iconset>
+   </property>
+   <property name="text">
+    <string>退出(&amp;Q)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="doAbout">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doAbout.svg</normaloff>:/doAbout.svg</iconset>
+   </property>
+   <property name="text">
+    <string>关于(F1)</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="doRestore">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doRestore.svg</normaloff>:/doRestore.svg</iconset>
+   </property>
+   <property name="text">
+    <string>恢复(&amp;Z)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="doZoom">
+   <property name="text">
+    <string>缩放(&amp;+)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="doGrayscale">
+   <property name="text">
+    <string>灰度</string>
+   </property>
+  </action>
+  <action name="doWarm">
+   <property name="text">
+    <string>Warm</string>
+   </property>
+  </action>
+  <action name="doCool">
+   <property name="text">
+    <string>Cool</string>
+   </property>
+  </action>
+  <action name="doMovie_frame">
+   <property name="text">
+    <string>电影相框</string>
+   </property>
+  </action>
+  <action name="doClassic_frame">
+   <property name="text">
+    <string>经典相框</string>
+   </property>
+  </action>
+  <action name="doFlower_frame">
+   <property name="text">
+    <string>小花相框</string>
+   </property>
+  </action>
+  <action name="doBrightness">
+   <property name="text">
+    <string>亮度</string>
+   </property>
+  </action>
+  <action name="doHorizontal">
+   <property name="text">
+    <string>水平翻转</string>
+   </property>
+  </action>
+  <action name="doVertical">
+   <property name="text">
+    <string>垂直翻转</string>
+   </property>
+  </action>
+  <action name="doSimple">
+   <property name="text">
+    <string>简单模糊</string>
+   </property>
+  </action>
+  <action name="doGauss">
+   <property name="text">
+    <string>高斯模糊</string>
+   </property>
+  </action>
+  <action name="doMeida_Filter">
+   <property name="text">
+    <string>中值滤波</string>
+   </property>
+  </action>
+  <action name="doLaplace">
+   <property name="text">
+    <string>拉普拉斯锐化</string>
+   </property>
+  </action>
+  <action name="doBinaryzation">
+   <property name="text">
+    <string>二值化</string>
+   </property>
+  </action>
+  <action name="doContour_extraction">
+   <property name="text">
+    <string>轮廓提取</string>
+   </property>
+  </action>
+  <action name="doDilate">
+   <property name="text">
+    <string>腐蚀</string>
+   </property>
+  </action>
+  <action name="doExpansion">
+   <property name="text">
+    <string>膨胀</string>
+   </property>
+  </action>
+  <action name="doOpening">
+   <property name="text">
+    <string>开运算</string>
+   </property>
+  </action>
+  <action name="doClosing">
+   <property name="text">
+    <string>闭运算</string>
+   </property>
+  </action>
+  <action name="doRotate">
+   <property name="text">
+    <string>旋转</string>
+   </property>
+  </action>
+  <action name="do_adjust">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/do_adjust.svg</normaloff>:/do_adjust.svg</iconset>
+   </property>
+   <property name="text">
+    <string>适应屏幕(&amp;D)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="do_adjust_left">
+   <property name="text">
+    <string>左图适应(&amp;L)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Left</string>
+   </property>
+  </action>
+  <action name="do_adjust_right">
+   <property name="text">
+    <string>右图适应(&amp;R)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Right</string>
+   </property>
+  </action>
+  <action name="doRotate_left">
+   <property name="text">
+    <string>逆时针旋转(&amp;L)</string>
+   </property>
+   <property name="toolTip">
+    <string>逆时针旋转</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="doRotate_right">
+   <property name="text">
+    <string>顺时针旋转(&amp;R)</string>
+   </property>
+   <property name="toolTip">
+    <string>顺时针旋转</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="do_AutoPS_wec">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/do_AutoPS_wec.svg</normaloff>:/do_AutoPS_wec.svg</iconset>
+   </property>
+   <property name="text">
+    <string>自动修图</string>
+   </property>
+  </action>
+  <action name="doOpenJson">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doOpenJson.svg</normaloff>:/doOpenJson.svg</iconset>
+   </property>
+   <property name="text">
+    <string>加载Json文件(单条轨迹)</string>
+   </property>
+   <property name="toolTip">
+    <string>加载Json文件(单条轨迹)</string>
+   </property>
+  </action>
+  <action name="doSaveJson">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doSaveJson.svg</normaloff>:/doSaveJson.svg</iconset>
+   </property>
+   <property name="text">
+    <string>保存Json文件</string>
+   </property>
+   <property name="toolTip">
+    <string>保存Json文件</string>
+   </property>
+  </action>
+  <action name="doCleanJson">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doCleanJson.svg</normaloff>:/doCleanJson.svg</iconset>
+   </property>
+   <property name="text">
+    <string>清除当前轨迹</string>
+   </property>
+   <property name="toolTip">
+    <string>清除当前轨迹</string>
+   </property>
+  </action>
+  <action name="actiontest">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/actiontest.svg</normaloff>:/actiontest.svg</iconset>
+   </property>
+   <property name="text">
+    <string>test(开发使用)</string>
+   </property>
+   <property name="toolTip">
+    <string>test</string>
+   </property>
+  </action>
+  <action name="do_draw_path">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/do_draw_path.svg</normaloff>:/do_draw_path.svg</iconset>
+   </property>
+   <property name="text">
+    <string>自由绘制轨迹</string>
+   </property>
+   <property name="toolTip">
+    <string>自由绘制轨迹</string>
+   </property>
+  </action>
+  <action name="do_fill_path">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/do_fill_path.svg</normaloff>:/do_fill_path.svg</iconset>
+   </property>
+   <property name="text">
+    <string>填充全部轨迹</string>
+   </property>
+   <property name="toolTip">
+    <string>填充全部轨迹</string>
+   </property>
+  </action>
+  <action name="doOpenYaml">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doOpenYaml.svg</normaloff>:/doOpenYaml.svg</iconset>
+   </property>
+   <property name="text">
+    <string>加载yaml文件</string>
+   </property>
+   <property name="toolTip">
+    <string>加载yaml文件</string>
+   </property>
+  </action>
+  <action name="doDrawLine">
+   <property name="text">
+    <string>绘制虚拟墙</string>
+   </property>
+   <property name="toolTip">
+    <string>绘制虚拟墙</string>
+   </property>
+  </action>
+  <action name="doDrawTraj_png">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doDrawTraj_png.svg</normaloff>:/doDrawTraj_png.svg</iconset>
+   </property>
+   <property name="text">
+    <string>绘制轨迹到png</string>
+   </property>
+   <property name="toolTip">
+    <string>绘制轨迹到png</string>
+   </property>
+  </action>
+  <action name="do_draw_polygons_area">
+   <property name="text">
+    <string>绘制多边形区域</string>
+   </property>
+   <property name="toolTip">
+    <string>绘制多边形区域</string>
+   </property>
+  </action>
+  <action name="do_draw_ploygons">
+   <property name="text">
+    <string>填充区域</string>
+   </property>
+   <property name="toolTip">
+    <string>填充区域</string>
+   </property>
+  </action>
+  <action name="do_adjust_polygons_area">
+   <property name="text">
+    <string>显示多边形区域</string>
+   </property>
+   <property name="toolTip">
+    <string>显示多边形区域</string>
+   </property>
+  </action>
+  <action name="do_draw_full_covered_path">
+   <property name="text">
+    <string>绘制覆盖式轨迹</string>
+   </property>
+   <property name="toolTip">
+    <string>绘制覆盖式轨迹</string>
+   </property>
+  </action>
+  <action name="do_save_polygons_area">
+   <property name="text">
+    <string>记录区域</string>
+   </property>
+   <property name="toolTip">
+    <string>记录区域</string>
+   </property>
+  </action>
+  <action name="do_load_polygons_area">
+   <property name="text">
+    <string>加载区域</string>
+   </property>
+   <property name="toolTip">
+    <string>记载区域</string>
+   </property>
+  </action>
+  <action name="do_clean_polygons_area">
+   <property name="text">
+    <string>清除区域</string>
+   </property>
+   <property name="toolTip">
+    <string>清除区域</string>
+   </property>
+  </action>
+  <action name="doDrawWhitePolygon">
+   <property name="text">
+    <string>多边形橡皮擦</string>
+   </property>
+   <property name="toolTip">
+    <string>多边形橡皮擦</string>
+   </property>
+  </action>
+  <action name="doDrawPathContinue">
+   <property name="icon">
+    <iconset resource="../res/ImageDir.qrc">
+     <normaloff>:/doDrawPathContinue.svg</normaloff>:/doDrawPathContinue.svg</iconset>
+   </property>
+   <property name="text">
+    <string>追加轨迹</string>
+   </property>
+   <property name="toolTip">
+    <string>追加轨迹</string>
+   </property>
+  </action>
+  <action name="do_rtk_full_cover_path">
+   <property name="text">
+    <string>rtk覆盖式轨迹</string>
+   </property>
+   <property name="toolTip">
+    <string>rtk覆盖式轨迹</string>
+   </property>
+  </action>
+  <action name="doOpenJsonExclusively">
+   <property name="text">
+    <string>仅加载Json文件</string>
+   </property>
+   <property name="toolTip">
+    <string>仅加载Json文件</string>
+   </property>
+  </action>
+  <action name="do_selectMultiPoint_polygen">
+   <property name="text">
+    <string>框选点</string>
+   </property>
+   <property name="toolTip">
+    <string>框选点</string>
+   </property>
+  </action>
+  <action name="do_addAttribute">
+   <property name="text">
+    <string>添加属性</string>
+   </property>
+   <property name="toolTip">
+    <string>添加属性</string>
+   </property>
+  </action>
+  <action name="do_clean_pointSelect_area">
+   <property name="text">
+    <string>清除框选</string>
+   </property>
+   <property name="toolTip">
+    <string>清除框选</string>
+   </property>
+  </action>
+  <action name="doCleanAllMPath">
+   <property name="text">
+    <string>清除所有轨迹</string>
+   </property>
+   <property name="toolTip">
+    <string>清除所有轨迹</string>
+   </property>
+  </action>
+  <action name="do_draw_next_mpath">
+   <property name="text">
+    <string>保存并进行下一条轨迹绘制</string>
+   </property>
+   <property name="toolTip">
+    <string>保存并进行下一条轨迹绘制</string>
+   </property>
+  </action>
+  <action name="doOpenJson_multiMPath">
+   <property name="text">
+    <string>加载Json文件(多条轨迹)</string>
+   </property>
+   <property name="toolTip">
+    <string>加载Json文件(多条轨迹)</string>
+   </property>
+  </action>
+  <action name="do_draw_functional_area">
+   <property name="text">
+    <string>绘制功能区</string>
+   </property>
+   <property name="toolTip">
+    <string>绘制功能区</string>
+   </property>
+  </action>
+  <action name="do_clean_current_functional_area">
+   <property name="text">
+    <string>清除当前功能区</string>
+   </property>
+   <property name="toolTip">
+    <string>清除当前功能区</string>
+   </property>
+  </action>
+  <action name="do_clean_all_functional_area">
+   <property name="text">
+    <string>清除所有功能区</string>
+   </property>
+   <property name="toolTip">
+    <string>清除所有功能区</string>
+   </property>
+  </action>
+  <action name="do_draw_next_functional_area">
+   <property name="text">
+    <string>保存并进行下一个功能区绘制</string>
+   </property>
+   <property name="toolTip">
+    <string>保存并进行下一个功能区绘制</string>
+   </property>
+  </action>
+  <action name="do_save_functional_area">
+   <property name="text">
+    <string>记录功能区</string>
+   </property>
+   <property name="toolTip">
+    <string>记录功能区</string>
+   </property>
+  </action>
+  <action name="do_load_functional_area">
+   <property name="text">
+    <string>加载功能区</string>
+   </property>
+   <property name="toolTip">
+    <string>加载功能区</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GraphicsView</class>
+   <extends>QWidget</extends>
+   <header location="global">graphicsview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../res/ImageDir.qrc"/>
+ </resources>
+ <connections/>
+</ui>

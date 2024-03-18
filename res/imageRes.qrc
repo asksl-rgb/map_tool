@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>actiontest.svg</file>
+        <file>do_adjust.svg</file>
+        <file>do_AutoPS_wec.svg</file>
+        <file>do_draw_path.svg</file>
+        <file>do_fill_path.svg</file>
+        <file>doAbout.svg</file>
+        <file>doCleanJson.svg</file>
+        <file>doClose.svg</file>
+        <file>doDrawPathContinue.svg</file>
+        <file>doDrawTraj_png.svg</file>
+        <file>doExit.svg</file>
+        <file>doOpen.svg</file>
+        <file>doOpenJson.svg</file>
+        <file>doOpenYaml.svg</file>
+        <file>doRestore.svg</file>
+        <file>doSave.svg</file>
+        <file>doSave_As.svg</file>
+        <file>doSaveJson.svg</file>
+        <file>SimpleImage.svg</file>
+    </qresource>
+</RCC>

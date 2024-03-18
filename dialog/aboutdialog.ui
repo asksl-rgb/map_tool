@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AboutDialog</class>
+ <widget class="QWidget" name="AboutDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>550</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>关于 - Map Tool</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../res/ImageDir.qrc">
+    <normaloff>:/SimpleImage.svg</normaloff>:/SimpleImage.svg</iconset>
+  </property>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>110</y>
+     <width>150</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+    border-image: url(./res/ButtonNormal.png);
+}
+QPushButton:hover
+{
+    border-image: url(./res/ButtonHover.png);
+}
+QPushButton:pressed
+{
+    border-image: url(./res/ButtonPressed.png);
+}
+color:rgb(18, 188, 255);
+</string>
+   </property>
+   <property name="text">
+    <string>技术支持</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Pic">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>20</y>
+     <width>233</width>
+     <height>233</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>图片</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Text">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>283</y>
+     <width>510</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Simple Image</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>200</y>
+     <width>150</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+    border-image: url(./res/ButtonNormal.png);
+}
+QPushButton:hover
+{
+    border-image: url(./res/ButtonHover.png);
+}
+QPushButton:pressed
+{
+    border-image: url(./res/ButtonPressed.png);
+}</string>
+   </property>
+   <property name="text">
+    <string>版权及条款</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>20</y>
+     <width>150</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+    border-image: url(./res/ButtonNormal.png);
+}
+QPushButton:hover
+{
+    border-image: url(./res/ButtonHover.png);
+}
+QPushButton:pressed
+{
+    border-image: url(./res/ButtonPressed.png);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>检查更新</string>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../res/ImageDir.qrc"/>
+ </resources>
+ <connections/>
+</ui>
